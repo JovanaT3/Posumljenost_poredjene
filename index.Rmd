@@ -1,0 +1,91 @@
+---
+output:
+  html_document: 
+    fig_width: 9.5
+    theme: flatly
+---
+
+<!-- ucitavanje biblioteka -->
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(rgdal) 
+library(leaflet.extras2)
+library(leafpop)
+library(mapview)
+```
+
+<!-- unos shp fajla -->
+```{r echo=FALSE, warning=FALSE, message=FALSE, include = FALSE}
+shp = readOGR(dsn="C:\\MASTER RAD\\FINALNO\\R\\GIT\\Posumljenost_poredjene\\PODACI",layer="STATISTIKA")
+```
+
+<!-- kreiranje mapa posumljenih povrsina -->
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+mapS2012 <- mapview(shp, zcol = "X._S2012", at=seq(0,100,10),
+                   col.regions = RColorBrewer::brewer.pal(9, "Greens"), alpha.regions = 1,
+                   layer.name = "Pošumljenost 2012",
+                   map.types = c('CartoDB.Positron','Esri.WorldImagery','OpenStreetMap'),
+                   popup = popupTable(
+                    shp, row.numbers = FALSE, feature.id = FALSE,
+                    zcol = c(
+                      "NameASCII",
+                      "P_OPSTINE",
+                      "P_S2012",
+                      "X._S2012",
+                      "P_S2015",
+                      "X._S2015"
+                      )
+                    )
+                  )
+
+mapS2015 <- mapview(shp, zcol = "X._S2015", at=seq(0,100,10),
+                   col.regions = RColorBrewer::brewer.pal(9, "Greens"), alpha.regions = 1,
+                   layer.name = "Pošumljenost 2015",
+                   map.types = c('CartoDB.Positron','Esri.WorldImagery','OpenStreetMap'),
+                   popup = popupTable(
+                    shp, row.numbers = FALSE, feature.id = FALSE,
+                    zcol = c(
+                      "NameASCII",
+                      "P_OPSTINE",
+                      "P_S2015",
+                      "X._S2015",
+                      "P_S2018",
+                      "X._S2018"
+                      )
+                    )
+                  )
+
+mapS2018 <- mapview(shp, zcol = "X._S2018", at=seq(0,100,10),
+                   col.regions = RColorBrewer::brewer.pal(9, "Greens"), alpha.regions = 1,
+                   layer.name = "Pošumljenost 2018",
+                   map.types = c('CartoDB.Positron','Esri.WorldImagery','OpenStreetMap'),
+                   popup = popupTable(
+                    shp, row.numbers = FALSE, feature.id = FALSE,
+                    zcol = c(
+                      "NameASCII",
+                      "P_OPSTINE",
+                      "P_S2012",
+                      "X._S2012",
+                      "P_S2018",
+                      "X._S2018"
+                      )
+                    )
+                  )
+```
+
+# [*Vizuelno poređenje karata pošumljenih površina opština u Srbiji za godine 2012, 2015 i 2018*]{.underline}</span>
+
+### Izaberi kartu promene:{.tabset}
+#### Karta poređenja 2012/2015
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+mapS2012 | mapS2015
+```
+
+#### Karta poređenja 2015/2018
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+mapS2015 | mapS2018
+```
+
+#### Karta poređenja 2012/2015
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+mapS2012 | mapS2018
+```
