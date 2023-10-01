@@ -72,20 +72,20 @@ mapS2018 <- mapview(shp, zcol = "X._S2018", at=seq(0,100,10),
                   )
 ```
 
-# [*Vizuelno poređenje karata pošumljenih površina opština u Srbiji za godine 2012, 2015 i 2018*]{.underline}</span>
+# [[*Vizuelno poređenje karata pošumljenih površina opština u Srbiji za godine 2012, 2015 i 2018*]{.underline}]{style="font-family:Arial"}
 
-### Izaberi kartu poređenja:{.tabset}
-#### Karta poređenja 2012/2015
+### [Izaberi kartu poređenja:]{style="font-family:Arial"}{.tabset}
+#### [Karta poređenja 2012/2015]{style="font-family:Arial"}
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 mapS2012 | mapS2015
 ```
 
-#### Karta poređenja 2015/2018
+#### [Karta poređenja 2015/2018]{style="font-family:Arial"}
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 mapS2015 | mapS2018
 ```
 
-#### Karta poređenja 2012/2015
+#### [Karta poređenja 2012/2015]{style="font-family:Arial"}
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 mapS2012 | mapS2018
 ```
